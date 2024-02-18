@@ -1,0 +1,3 @@
+pdflatex -shell-escape -synctex=1 -interaction=nonstopmode %.tex
+
+sudo apt install python3-pygments

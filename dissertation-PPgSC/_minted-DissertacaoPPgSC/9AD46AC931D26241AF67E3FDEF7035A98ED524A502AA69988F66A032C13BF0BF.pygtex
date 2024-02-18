@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{\PYGZbs{}usepackage}\PYG{n+na}{[algochapter, linesnumbered, lined, portuguese, ruled]}
+\PYG{n+nb}{\PYGZob{}}algorithm2e\PYG{n+nb}{\PYGZcb{}}
+\end{Verbatim}

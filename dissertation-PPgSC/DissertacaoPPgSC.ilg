@@ -1,0 +1,9 @@
+This is makeindex, version 2.15 [TeX Live 2022/dev] (kpathsea + Thai support).
+Scanning input file DissertacaoPPgSC.idx....
+!! Input index error (file = DissertacaoPPgSC.idx, line = 134):
+   -- Illegal null field.
+done (144 entries accepted, 1 rejected).
+Sorting entries....done (1110 comparisons).
+Generating output file DissertacaoPPgSC.ind....done (175 lines written, 0 warnings).
+Output written in DissertacaoPPgSC.ind.
+Transcript written in DissertacaoPPgSC.ilg.

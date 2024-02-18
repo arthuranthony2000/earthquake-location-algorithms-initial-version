@@ -1,0 +1,138 @@
+clc
+clear all
+close all
+
+vp = 6.15;
+vs = 3.55;
+
+t = @(s, c, v) norm(s - c) / v;
+
+fixed_z = -8;
+
+event = [80, 50, -8];
+
+st = [40, 33, 0;
+    45, 50, 0;
+    43, 52, 0;
+    44, 55, 0;
+    42, 50, 0;
+    50, 51, 0
+    52, 58, 0];
+
+tobs_p = zeros(1, 7);
+tobs_s = zeros(1, 7);
+
+for i=1:7
+    tobs_p(i) = t(st(i, :), event, vp);
+    tobs_s(i) = t(st(i, :), event, vs);
+end
+
+D = @(s, c) norm(s - c);
+
+v_obs = @(s1, s2, c, tobs) (D(s1, c) - D(s2, c)) / (tobs(1) - tobs(2));
+
+s_p_coefficient = @(vp, vs) (vp * vs) / (vp - vs);
+
+grid_size = 200;
+
+x = linspace(1, grid_size, grid_size);
+y = linspace(1, grid_size, grid_size);
+[X, Y] = meshgrid(x, y);
+
+pertinence_p = zeros(grid_size);
+pertinence_s = zeros(grid_size);
+pertinence_c = zeros(grid_size);
+
+w = 2;
+
+for k=1:6
+    pertinence_p_aux = zeros(grid_size);
+    pertinence_s_aux = zeros(grid_size);
+    pertinence_c_aux = zeros(grid_size);
+    
+    for i = 1:grid_size
+        for j = 1:grid_size
+            cell_coordinate = [j, i, fixed_z]; % Use grid coordinates
+            
+            % Trapezoidal functions for pertinence
+            pertinence_p_aux(i, j) = trapezoidal(v_obs(st(k, :), st(w, :), cell_coordinate, tobs_p), [5.9, 6.1, 6.2, 14.4]);
+            pertinence_s_aux(i, j) = trapezoidal(v_obs(st(k, :), st(w, :), cell_coordinate, tobs_s), [3.35, 3.52, 3.58, 8.75]);
+            pertinence_c_aux(i, j) = trapezoidal(s_p_coefficient(v_obs(st(k, :), st(w, :), cell_coordinate, tobs_p), v_obs(st(k, :), st(w, :), cell_coordinate, tobs_s)), [7.8, 8.3, 8.5, 16]);
+            
+        end
+    end
+    
+    pertinence_p = max(pertinence_p, pertinence_p_aux);
+    pertinence_s = max(pertinence_s, pertinence_s_aux);
+    pertinence_c = max(pertinence_c, pertinence_c_aux);
+    
+    w = w + 1;
+end
+
+% Perform the operation O = (P-Wave U S-Wave) ∩ S-P Coefficient
+pertinence_o = min(max(pertinence_p, pertinence_s), pertinence_c);
+
+% Find the coordinates with pertinence closest to 1
+[row, col] = find(pertinence_o == max(pertinence_o(:)));
+best_coordinates = [col(size(col, 1)), row(size(row, 1))]; % Use grid coordinates
+
+fprintf('Best Coordinates (Grid Size %d): x = %.4f, y = %.4f\n', grid_size, best_coordinates(1), best_coordinates(2));
+
+
+% Plotar as funções de pertinência
+figure(1);
+
+% Criar um vetor de cores para a transição suave
+num_colors = 100; % Número de valores intermediários
+colormap_custom = [
+    linspace(0.5, 0, num_colors)', ... % Componente vermelha (cinza para azul claro)
+    linspace(0.5, 0.5, num_colors)', ... % Componente verde (cinza)
+    linspace(0.5, 1, num_colors)'; ... % Componente azul (cinza para azul claro)
+    
+    linspace(0, 0.5, num_colors)', ... % Componente vermelha (azul claro para azul escuro)
+    linspace(0.5, 0.5, num_colors)', ... % Componente verde (azul claro)
+    linspace(1, 0.5, num_colors)'; ... % Componente azul (azul claro para azul escuro)
+    
+    linspace(0.5, 1, num_colors)', ... % Componente vermelha (azul escuro para rosa)
+    linspace(0.5, 0, num_colors)', ... % Componente verde (azul escuro para rosa)
+    linspace(0.5, 0.5, num_colors)'; ... % Componente azul (azul escuro para rosa)
+    
+    linspace(1, 1, num_colors)', ... % Componente vermelha (rosa)
+    linspace(0, 0, num_colors)', ... % Componente verde (rosa)
+    linspace(0.5, 0.5, num_colors)'; ... % Componente azul (rosa)
+    
+    linspace(1, 0.5, num_colors)', ... % Componente vermelha (rosa para violeta)
+    linspace(0, 0.5, num_colors)', ... % Componente verde (rosa para violeta)
+    linspace(0.5, 1, num_colors)' % Componente azul (rosa para violeta)
+    ];
+
+% Plotar as funções de pertinência
+figure(1);
+
+subplot(1, 3, 1);
+contourf(X, Y, pertinence_p, 'LineColor', 'none');
+colormap(subplot(1, 3, 1), colormap_custom);
+colorbar;
+title('P-Wave Pertinence');
+
+subplot(1, 3, 2);
+contourf(X, Y, pertinence_s, 'LineColor', 'none');
+colormap(subplot(1, 3, 2), colormap_custom);
+colorbar;
+title('S-Wave Pertinence');
+
+subplot(1, 3, 3);
+contourf(X, Y, pertinence_c, 'LineColor', 'none');
+colormap(subplot(1, 3, 3), colormap_custom);
+colorbar;
+title('S-P Coefficient Pertinence');
+
+
+function pertinence = trapezoidal(value, params)
+a = params(1);
+b = params(2);
+c = params(3);
+d = params(4);
+
+pertinence = max(0, min([max(0, (value - a) / (b - a)), 1, max(0, (d - value) / (d - c))]));
+end

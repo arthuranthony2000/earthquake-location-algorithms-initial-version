@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{\PYGZbs{}begin}\PYG{n+nb}{\PYGZob{}}algorithm\PYG{n+nb}{\PYGZcb{}}[ht]
+  \PYG{k}{\PYGZbs{}setstretch}\PYG{n+nb}{\PYGZob{}}1.35\PYG{n+nb}{\PYGZcb{}}
+  \PYG{l+s}{\PYGZdl{}}\PYG{n+nb}{y }\PYG{o}{=}\PYG{n+nb}{ x.right}\PYG{l+s}{\PYGZdl{}} \PYG{k}{\PYGZbs{}\PYGZbs{}}
+  \PYG{l+s}{\PYGZdl{}}\PYG{n+nb}{x.right }\PYG{o}{=}\PYG{n+nb}{ y.left}\PYG{l+s}{\PYGZdl{}} \PYG{k}{\PYGZbs{}\PYGZbs{}}
+  \PYG{k}{\PYGZbs{}If}\PYG{n+nb}{\PYGZob{}}\PYG{l+s}{\PYGZdl{}}\PYG{n+nb}{y.left }\PYG{n+nv}{\PYGZbs{}neq}\PYG{n+nb}{ T.nil}\PYG{l+s}{\PYGZdl{}}\PYG{n+nb}{\PYGZcb{}\PYGZob{}}
+    \PYG{l+s}{\PYGZdl{}}\PYG{n+nb}{y.left.p }\PYG{o}{=}\PYG{n+nb}{ x}\PYG{l+s}{\PYGZdl{}}\PYG{n+nb}{\PYGZcb{}}
+  \PYG{l+s}{\PYGZdl{}}\PYG{n+nb}{y.p }\PYG{o}{=}\PYG{n+nb}{ x.p}\PYG{l+s}{\PYGZdl{}} \PYG{k}{\PYGZbs{}\PYGZbs{}}
+  \PYG{k}{\PYGZbs{}If}\PYG{n+nb}{\PYGZob{}}\PYG{l+s}{\PYGZdl{}}\PYG{n+nb}{x.p }\PYG{o}{==}\PYG{n+nb}{ T.nil}\PYG{l+s}{\PYGZdl{}}\PYG{n+nb}{\PYGZcb{}\PYGZob{}}
+    \PYG{l+s}{\PYGZdl{}}\PYG{n+nb}{T.root }\PYG{o}{=}\PYG{n+nb}{ y}\PYG{l+s}{\PYGZdl{}}\PYG{n+nb}{\PYGZcb{}}
+  \PYG{k}{\PYGZbs{}ElseIf}\PYG{n+nb}{\PYGZob{}}\PYG{l+s}{\PYGZdl{}}\PYG{n+nb}{x }\PYG{o}{==}\PYG{n+nb}{ x.p.left}\PYG{l+s}{\PYGZdl{}}\PYG{n+nb}{\PYGZcb{}\PYGZob{}}
+    \PYG{l+s}{\PYGZdl{}}\PYG{n+nb}{x.p.left }\PYG{o}{=}\PYG{n+nb}{ y}\PYG{l+s}{\PYGZdl{}}\PYG{n+nb}{\PYGZcb{}}
+  \PYG{k}{\PYGZbs{}Else}\PYG{n+nb}{\PYGZob{}}\PYG{l+s}{\PYGZdl{}}\PYG{n+nb}{x.p.right }\PYG{o}{=}\PYG{n+nb}{ y}\PYG{l+s}{\PYGZdl{}}\PYG{n+nb}{\PYGZcb{}}
+  \PYG{l+s}{\PYGZdl{}}\PYG{n+nb}{y.left }\PYG{o}{=}\PYG{n+nb}{ x}\PYG{l+s}{\PYGZdl{}} \PYG{k}{\PYGZbs{}\PYGZbs{}}
+  \PYG{l+s}{\PYGZdl{}}\PYG{n+nb}{x.p }\PYG{o}{==}\PYG{n+nb}{ y}\PYG{l+s}{\PYGZdl{}}
+  \PYG{k}{\PYGZbs{}caption}\PYG{n+nb}{\PYGZob{}}LeftRotate(\PYG{l+s}{\PYGZdl{}}\PYG{n+nb}{T,x}\PYG{l+s}{\PYGZdl{}})\PYG{n+nb}{\PYGZcb{}}
+  \PYG{k}{\PYGZbs{}label}\PYG{n+nb}{\PYGZob{}}alg:left\PYGZhy{}rotate\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}end}\PYG{n+nb}{\PYGZob{}}algorithm\PYG{n+nb}{\PYGZcb{}}
+\end{Verbatim}

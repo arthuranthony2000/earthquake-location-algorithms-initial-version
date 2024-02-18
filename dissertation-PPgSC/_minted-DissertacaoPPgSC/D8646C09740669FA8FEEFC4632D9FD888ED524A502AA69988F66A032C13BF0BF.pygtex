@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{\PYGZbs{}begin}\PYG{n+nb}{\PYGZob{}}appendices\PYG{n+nb}{\PYGZcb{}}
+  \PYG{c}{\PYGZpc{} Apêndice A (arquivo capitulos/apendice1.tex)}
+  \PYG{k}{\PYGZbs{}input}\PYG{n+nb}{\PYGZob{}}capitulos/apendice1.tex\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}end}\PYG{n+nb}{\PYGZob{}}appendices\PYG{n+nb}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{\PYGZbs{}begin}\PYG{n+nb}{\PYGZob{}}figure\PYG{n+nb}{\PYGZcb{}}[ht]
+  \PYG{k}{\PYGZbs{}begin}\PYG{n+nb}{\PYGZob{}}center\PYG{n+nb}{\PYGZcb{}}
+    \PYG{k}{\PYGZbs{}begin}\PYG{n+nb}{\PYGZob{}}tabular\PYG{n+nb}{\PYGZcb{}\PYGZob{}}cc\PYG{n+nb}{\PYGZcb{}}
+      \PYG{k}{\PYGZbs{}includegraphics}\PYG{n+na}{[height=5cm]}\PYG{n+nb}{\PYGZob{}}imagens/capitulo2/imagemCinza.jpg\PYG{n+nb}{\PYGZcb{}} \PYG{n+nb}{\PYGZam{}}
+      \PYG{k}{\PYGZbs{}includegraphics}\PYG{n+na}{[height=5cm]}\PYG{n+nb}{\PYGZob{}}imagens/capitulo2/imagemColorida.jpg\PYG{n+nb}{\PYGZcb{}}
+      \PYG{k}{\PYGZbs{}\PYGZbs{}}
+      (a) \PYG{n+nb}{\PYGZam{}} (b)
+    \PYG{k}{\PYGZbs{}end}\PYG{n+nb}{\PYGZob{}}tabular\PYG{n+nb}{\PYGZcb{}}
+  \PYG{k}{\PYGZbs{}end}\PYG{n+nb}{\PYGZob{}}center\PYG{n+nb}{\PYGZcb{}}
+  \PYG{k}{\PYGZbs{}caption}\PYG{n+nb}{\PYGZob{}}Exemplo de subfiguras usando o ambiente \PYG{k}{\PYGZbs{}texttt}\PYG{n+nb}{\PYGZob{}}tabular\PYG{n+nb}{\PYGZcb{}}.
+  Representação de uma imagem digital. (a) Imagem em escala de cinza.
+  (b) Imagem colorida. Imagem extraída de \PYG{k}{\PYGZbs{}parencite}\PYG{n+nb}{\PYGZob{}}Barbosa2020\PYG{n+nb}{\PYGZcb{}}.\PYG{n+nb}{\PYGZcb{}}
+  \PYG{k}{\PYGZbs{}label}\PYG{n+nb}{\PYGZob{}}fig:subfigtabular\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}end}\PYG{n+nb}{\PYGZob{}}figure\PYG{n+nb}{\PYGZcb{}}
+\end{Verbatim}
